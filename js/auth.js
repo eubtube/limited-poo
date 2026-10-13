@@ -8,7 +8,7 @@ export const authState = {
 };
 
 export async function bootAuth() {
-  const sb = supabase();
+  const sb = await supabase();
   if (!sb || !isConfigured()) return authState;
   const { data } = await sb.auth.getSession();
   authState.session = data.session;
@@ -40,7 +40,7 @@ function maybeSendToClaim() {
 }
 
 export async function sendMagicLink(email) {
-  const sb = supabase();
+  const sb = await supabase();
   if (!sb) throw new Error("stockroom is not plugged in yet");
   const { error } = await sb.auth.signInWithOtp({
     email,
@@ -53,7 +53,7 @@ export async function sendMagicLink(email) {
 }
 
 export async function signOut() {
-  const sb = supabase();
+  const sb = await supabase();
   if (!sb) return;
   await sb.auth.signOut();
   authState.session = null;

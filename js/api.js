@@ -1,11 +1,13 @@
-import { createClient } from "https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm";
 import { SUPABASE_URL, SUPABASE_ANON_KEY, isConfigured } from "./config.js";
 
 let client;
 
-export function supabase() {
+export async function supabase() {
   if (!isConfigured()) return null;
-  if (!client) client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  if (!client) {
+    const { createClient } = await import("https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm");
+    client = createClient(SUPABASE_URL, SUPABASE_ANON_KEY);
+  }
   return client;
 }
 
@@ -20,8 +22,14 @@ function one(rel) {
   return Array.isArray(rel) ? rel[0] : rel;
 }
 
+async function db() {
+  const sb = await supabase();
+  if (!sb) throw new Error("plug in Supabase first (js/config.js)");
+  return sb;
+}
+
 export async function bumpVisits() {
-  const sb = supabase();
+  const sb = await supabase();
   if (!sb) return 284019;
   const { data, error } = await sb.rpc("bump_visits");
   if (error) fail(error);
@@ -29,7 +37,7 @@ export async function bumpVisits() {
 }
 
 export async function listPups() {
-  const { data, error } = await supabase()
+  const { data, error } = await (await db())
     .from("pups")
     .select("id, name, breed, vibe, bio, emoji, color, locked, is_founder, user_id, streaks ( days, last_slip )")
     .order("created_at", { ascending: true });
@@ -38,7 +46,7 @@ export async function listPups() {
 }
 
 export async function getFounder() {
-  const { data, error } = await supabase()
+  const { data, error } = await (await db())
     .from("pups")
     .select("id, name, streaks ( days, last_slip )")
     .eq("is_founder", true)
@@ -49,7 +57,7 @@ export async function getFounder() {
 }
 
 export async function myPup(userId) {
-  const { data, error } = await supabase()
+  const { data, error } = await (await db())
     .from("pups")
     .select("id, name, breed, vibe, bio, emoji, color, streaks ( days, last_slip )")
     .eq("user_id", userId)
@@ -60,6 +68,7 @@ export async function myPup(userId) {
 }
 
 export async function claimPup(fields, userId) {
+  const sb = await db();
   const row = {
     user_id: userId,
     name: fields.name.trim(),
@@ -71,9 +80,9 @@ export async function claimPup(fields, userId) {
     locked: false,
     is_founder: false,
   };
-  const { data, error } = await supabase().from("pups").insert(row).select().single();
+  const { data, error } = await sb.from("pups").insert(row).select().single();
   if (error) fail(error);
-  const { error: streakError } = await supabase().from("streaks").insert({
+  const { error: streakError } = await sb.from("streaks").insert({
     pup_id: data.id,
     days: 0,
     last_slip: "",
@@ -83,7 +92,7 @@ export async function claimPup(fields, userId) {
 }
 
 export async function listScores() {
-  const { data, error } = await supabase()
+  const { data, error } = await (await db())
     .from("scores")
     .select("id, event, points, note, created_at, pup_id, pups ( name )")
     .order("points", { ascending: false });
@@ -92,7 +101,7 @@ export async function listScores() {
 }
 
 export async function addScore({ pupId, event, points, note }) {
-  const { error } = await supabase().from("scores").insert({
+  const { error } = await (await db()).from("scores").insert({
     pup_id: pupId,
     event,
     points,
@@ -102,12 +111,12 @@ export async function addScore({ pupId, event, points, note }) {
 }
 
 export async function deleteScore(id) {
-  const { error } = await supabase().from("scores").delete().eq("id", id);
+  const { error } = await (await db()).from("scores").delete().eq("id", id);
   if (error) fail(error);
 }
 
 export async function listPosts(board) {
-  let query = supabase()
+  let query = (await db())
     .from("posts")
     .select("id, board, title, body, created_at, pup_id, pups ( name )")
     .order("created_at", { ascending: false });
@@ -118,17 +127,17 @@ export async function listPosts(board) {
 }
 
 export async function addPost({ pupId, board, title, body }) {
-  const { error } = await supabase().from("posts").insert({ pup_id: pupId, board, title, body });
+  const { error } = await (await db()).from("posts").insert({ pup_id: pupId, board, title, body });
   if (error) fail(error);
 }
 
 export async function deletePost(id) {
-  const { error } = await supabase().from("posts").delete().eq("id", id);
+  const { error } = await (await db()).from("posts").delete().eq("id", id);
   if (error) fail(error);
 }
 
 export async function updateStreak(pupId, days, lastSlip) {
-  const { error } = await supabase()
+  const { error } = await (await db())
     .from("streaks")
     .update({ days, last_slip: lastSlip ?? "" })
     .eq("pup_id", pupId);
@@ -136,7 +145,9 @@ export async function updateStreak(pupId, days, lastSlip) {
 }
 
 export async function amMallCop() {
-  const { data, error } = await supabase().rpc("i_am_mall_cop");
+  const sb = await supabase();
+  if (!sb) return false;
+  const { data, error } = await sb.rpc("i_am_mall_cop");
   if (error) return false;
   return Boolean(data);
 }

@@ -336,12 +336,13 @@ function bindForms() {
 async function boot() {
   sparkles();
   flowerCursor();
+  renderChrome();
   try {
     await bootAuth();
+    renderChrome();
   } catch (err) {
     say(err.message, true);
   }
-  renderChrome();
   if (!isConfigured()) {
     say("Preview mode: plug Supabase into js/config.js to open the shared mall.", true);
   }
