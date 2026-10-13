@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Scoop Scores · LiMiTeD POO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/too.css" />
+  </head>
+  <body>
+    <div class="sparkle-field"></div>
+    <div class="wrap">
+      <header id="site-header"></header>
+      <section class="card">
+        <h3>Hall of audacity</h3>
+        <p>
+          This board is for yammering about the old times, not recruiting. Quit Crew pups may
+          still admire a historic run the way humans admire a middle-school haircut.
+        </p>
+      </section>
+
+      <table class="scoreboard" style="margin-top: 18px">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Pup</th>
+            <th>Event</th>
+            <th>Pts</th>
+            <th>Judge's note</th>
+          </tr>
+        </thead>
+        <tbody id="score-body"></tbody>
+      </table>
+
+      <section class="card" style="margin-top: 22px" data-needs-pup>
+        <h3>Log a score (as your claimed pup)</h3>
+        <form class="pretty" id="score-form">
+          <label>Event name <input name="event" required placeholder="Midnight patio special" /></label>
+          <label>
+            Audacity (1–10)
+            <select name="audacity">
+              <option>1</option><option>3</option><option>5</option><option>8</option><option>10</option>
+            </select>
+          </label>
+          <label>
+            Freshness (1–10)
+            <select name="freshness">
+              <option>1</option><option>4</option><option>7</option><option>10</option>
+            </select>
+          </label>
+          <label>
+            Human witnesses?
+            <select name="witnesses">
+              <option value="no">no, stealth mode</option>
+              <option value="yes">yes, they made The Noise</option>
+            </select>
+          </label>
+          <label>Note <input name="note" placeholder="worth it / not worth it" /></label>
+          <button type="submit">submit to the judges</button>
+        </form>
+      </section>
+
+      <footer class="mall-end" id="site-footer"></footer>
+    </div>
+    <script type="module" src="js/site.js"></script>
+  </body>
+</html>

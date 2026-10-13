@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Find a Pup · LiMiTeD POO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/too.css" />
+  </head>
+  <body>
+    <div class="sparkle-field"></div>
+    <div class="wrap">
+      <header id="site-header"></header>
+      <section class="card">
+        <h3>Yearbook wall</h3>
+        <p>
+          Meet the mall regulars. Looking for a quit sponsor? Filter Quit Crew. Looking to brag?
+          The competitors will see you in the parking lot.
+        </p>
+        <label>
+          Show
+          <select id="pup-filter">
+            <option value="all">everybody</option>
+            <option value="quit">Quit Crew only</option>
+            <option value="compete">still competing</option>
+            <option value="yammer">yammer pals</option>
+          </select>
+        </label>
+      </section>
+
+      <div id="pup-list" class="pup-grid" style="margin-top: 18px"></div>
+
+      <section class="card" style="margin-top: 22px">
+        <h3>Want on the wall?</h3>
+        <p>
+          Yearbook slots are claimed with a magic email link, one pup per human.
+          Millie already took the cover. <a href="login.html">Open the email locker →</a>
+        </p>
+      </section>
+
+      <footer class="mall-end" id="site-footer"></footer>
+    </div>
+    <script type="module" src="js/site.js"></script>
+  </body>
+</html>

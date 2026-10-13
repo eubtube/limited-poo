@@ -1,0 +1,9 @@
+{
+  "name": "limited-poo",
+  "private": true,
+  "version": "0.1.0",
+  "scripts": {
+    "start": "python -m http.server 4173",
+    "dev": "python -m http.server 4173"
+  }
+}

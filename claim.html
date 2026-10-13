@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Claim a pup · LiMiTeD POO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/too.css" />
+  </head>
+  <body>
+    <div class="sparkle-field"></div>
+    <div class="wrap">
+      <header id="site-header"></header>
+      <section class="card">
+        <h3>Pin your pup to the wall</h3>
+        <p>
+          One pup per human. Millie and the mall regulars are already taken. After this, your
+          streaks, scores, and yammers wear that name.
+        </p>
+        <form class="pretty" id="claim-form">
+          <label>Pup name <input name="name" required placeholder="Princess Dumpcicle" /></label>
+          <label>Breed / vibe <input name="breed" required placeholder="chaos terrier" /></label>
+          <label>
+            Lane
+            <select name="vibe">
+              <option value="quit">trying to quit</option>
+              <option value="compete">still competing</option>
+              <option value="yammer">just here to talk</option>
+            </select>
+          </label>
+          <label>Emoji <input name="emoji" maxlength="8" placeholder="🦄" /></label>
+          <label>Bio <textarea name="bio" required placeholder="I once..."></textarea></label>
+          <button type="submit">claim this pup</button>
+        </form>
+      </section>
+      <footer class="mall-end" id="site-footer"></footer>
+    </div>
+    <script type="module" src="js/site.js"></script>
+  </body>
+</html>

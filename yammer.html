@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Yammer · LiMiTeD POO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/too.css" />
+  </head>
+  <body>
+    <div class="sparkle-field"></div>
+    <div class="wrap">
+      <header id="site-header"></header>
+      <section class="card">
+        <h3>The hot-pink benches</h3>
+        <p>
+          Three boards, one mall. Refresh to see new woofs — this is a wall, not a walkie-talkie.
+          Bean the corgi still theoretically deletes cat-box cuisine. We have a brand.
+        </p>
+        <label>
+          Board
+          <select id="board-filter">
+            <option value="all">all the yapping</option>
+            <option value="quit">quit support</option>
+            <option value="scores">best scores</option>
+            <option value="yammer">general drama</option>
+          </select>
+        </label>
+      </section>
+
+      <div id="yammer-feed"></div>
+
+      <section class="card" style="margin-top: 22px" data-needs-pup>
+        <h3>Leave a woof</h3>
+        <form class="pretty" id="post-form">
+          <label>
+            Board
+            <select name="board">
+              <option value="yammer">general drama</option>
+              <option value="quit">quit support</option>
+              <option value="scores">best scores</option>
+            </select>
+          </label>
+          <label>Subject <input name="title" required placeholder="you will NOT believe the park" /></label>
+          <label>Yap <textarea name="body" required></textarea></label>
+          <button type="submit">post it on the wall</button>
+        </form>
+      </section>
+
+      <footer class="mall-end" id="site-footer"></footer>
+    </div>
+    <script type="module" src="js/site.js"></script>
+  </body>
+</html>

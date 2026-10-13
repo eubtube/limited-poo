@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Quit Crew · LiMiTeD POO</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Cherry+Bomb+One&family=Fredoka:wght@400;600;700&family=Pacifico&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="css/too.css" />
+  </head>
+  <body>
+    <div class="sparkle-field"></div>
+    <div class="wrap">
+      <header id="site-header"></header>
+      <section class="hero">
+        <div>
+          <h2>Quit Crew HQ</h2>
+          <p>
+            We still tease the snack. We do not tease the pup. Shame is for the habit. Sequins are
+            for the streak.
+          </p>
+          <p id="streak-note" class="meta"></p>
+          <p class="streak" id="streak-days">0</p>
+          <p style="text-align: center">days of Leave It</p>
+          <div data-needs-pup>
+            <p>
+              <button id="streak-up" type="button">I walked past it today</button>
+              <button id="streak-reset" class="secondary" type="button">uh. I slipped.</button>
+            </p>
+            <label class="pretty"
+              >What happened
+              <input id="slip-note" placeholder="the park was... complicated" />
+            </label>
+          </div>
+        </div>
+        <div class="card">
+          <h3>The glitter steps</h3>
+          <ol>
+            <li>Admit the nose has a union and it is on strike against your brain.</li>
+            <li>Call a buddy before the squat-and-nibble.</li>
+            <li>Take the treat your human is frantically waving. That is also food.</li>
+            <li>If you slip, wipe your face, reset the counter, keep the friends.</li>
+            <li>Celebrate boring grass. Boring grass is the dream.</li>
+          </ol>
+        </div>
+      </section>
+
+      <div class="grid-2">
+        <section class="card">
+          <h3>Leave It: the mall game</h3>
+          <p>Click bones. Do not click the other thing. This is literally the whole program.</p>
+          <p>Score: <strong id="game-score">0</strong></p>
+          <div class="game" id="leave-it" aria-label="Leave It training arena"></div>
+        </section>
+        <section class="card">
+          <h3>Need a sponsor?</h3>
+          <p>
+            Brutus (91 days) and Mochi (greeter) are on rotation. Tell them whether you want
+            cheerleading or a dramatic gasp in dog language.
+          </p>
+          <p>
+            Suggested script: <em>"I smelled it. I left it. Please drop a squeaky toy on my
+            timeline."</em>
+          </p>
+          <a class="cta" href="buddies.html">browse Quit Crew pups</a>
+        </section>
+      </div>
+
+      <footer class="mall-end" id="site-footer"></footer>
+    </div>
+    <script type="module" src="js/site.js"></script>
+  </body>
+</html>
