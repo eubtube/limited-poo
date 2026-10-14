@@ -1,7 +1,6 @@
-// Public anon key is safe to ship with Row Level Security on.
-// Fill these in after you create the Supabase project (see supabase/schema.sql).
-export const SUPABASE_URL = "";
-export const SUPABASE_ANON_KEY = "";
+// Project URL + publishable key are meant to be public (RLS still protects data).
+export const SUPABASE_URL = "https://tigthxyapoiendrywkup.supabase.co";
+export const SUPABASE_ANON_KEY = "sb_publishable_W_QolxFIJTpcW3ODIgsWrQ_djm8MChi";
 
 export function siteBaseUrl() {
   const url = new URL(location.href);

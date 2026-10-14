@@ -6,7 +6,8 @@
 --     http://127.0.0.1:4173/**
 --     http://localhost:4173/**
 --     https://USER.github.io/limited-poo/**
--- Authentication → Providers → Email: enable Magic link.
+-- Authentication → Sign In / Providers → Email: leave Email enabled.
+-- There is no separate "Magic Link" switch. signInWithOtp sends a magic link by default.
 -- Optional mall cop: insert your login email below so you can delete anyone's spam.
 
 create table if not exists public.mall_cops (
